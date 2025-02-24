@@ -97,7 +97,7 @@ class ClienteControllerTest {
         when(service.buscarPorId(1L)).thenReturn(Optional.of(cliente));
         when(mapper.toResponse(any(Cliente.class))).thenReturn(clienteResponse);
 
-        mockMvc.perform(get("/clientes/1")
+        mockMvc.perform(get("/clientes/" + 1)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L))
@@ -111,7 +111,7 @@ class ClienteControllerTest {
     void deveRetornarNotFoundAoBuscarClienteInexistente() throws Exception {
         when(service.buscarPorId(1L)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/clientes/1")
+        mockMvc.perform(get("/clientes/" + 1)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
 
@@ -124,7 +124,7 @@ class ClienteControllerTest {
         when(service.atualizarCliente(eq(1L), any(Cliente.class))).thenReturn(cliente);
         when(mapper.toResponse(any(Cliente.class))).thenReturn(clienteResponse);
 
-        mockMvc.perform(put("/clientes/1")
+        mockMvc.perform(put("/clientes/"+ 1)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(clienteRequest)))
                 .andExpect(status().isOk())
@@ -139,7 +139,7 @@ class ClienteControllerTest {
     void deveExcluirCliente() throws Exception {
         doNothing().when(service).excluirCliente(1L);
 
-        mockMvc.perform(delete("/clientes/1")
+        mockMvc.perform(delete("/clientes/" + 1)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
 

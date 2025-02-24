@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class ClienteService {
 
-    private ClienteRepository repository;
+    private final ClienteRepository repository;
 
     public ClienteService(ClienteRepository repository) {
         this.repository = repository;
