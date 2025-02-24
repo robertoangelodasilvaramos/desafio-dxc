@@ -2,17 +2,19 @@ package com.br.dxc.service;
 
 import com.br.dxc.entitys.Cliente;
 import com.br.dxc.repository.ClienteRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ClienteService {
 
-    private final ClienteRepository repository;
+    private ClienteRepository repository;
+
+    public ClienteService(ClienteRepository repository) {
+        this.repository = repository;
+    }
 
     public Cliente criarCliente(Cliente cliente) {
         return repository.save(cliente);

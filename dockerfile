@@ -1,4 +1,4 @@
-# Usa a imagem oficial do JDK 11 como base
+# Usa a imagem oficial do JDK 17 como base
 FROM openjdk:11-jdk-slim
 
 # Define o diretório de trabalho dentro do container

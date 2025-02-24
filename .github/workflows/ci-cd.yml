@@ -21,10 +21,10 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Compilar aplicação
+      - name: Instalar dependências e compilar
         run: mvn clean package -DskipTests
 
-      - name: Armazenar artefatos
+      - name: Armazenar artefato
         uses: actions/upload-artifact@v3
         with:
           name: application-jar
